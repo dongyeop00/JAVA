@@ -8,6 +8,12 @@ class Solution {
             if(s.charAt(i)=='p'){
                 p_count++;
             }
+            if(s.charAt(i)=='P'){
+                p_count++;
+            }
+            if(s.charAt(i)=='Y'){
+                y_count++;
+            }
             if(s.charAt(i)=='y'){
                 y_count++;
             }
