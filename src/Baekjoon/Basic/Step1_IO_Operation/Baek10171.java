@@ -1,4 +1,4 @@
-package Baekjoon.Step1;
+package Baekjoon.Basic.Step1_IO_Operation;
 
 public class Baek10171 {
     public static void main(String[] arg){
