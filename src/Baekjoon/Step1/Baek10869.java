@@ -13,5 +13,9 @@ public class Baek10869 {
         int b = Integer.parseInt(stringTokenizer.nextToken());
 
         System.out.println(a+b);
+        System.out.println(a-b);
+        System.out.println(a*b);
+        System.out.println(a/b);
+        System.out.println(a%b);
     }
 }
