@@ -11,14 +11,18 @@ public class Baek2839 {
         int sugar = Integer.parseInt(bufferedReader.readLine());
         int count = 0;
 
-        while(sugar > 1){
+        while(sugar > 0){
             if(sugar % 5 == 0){
                 count += sugar/5;
-                System.out.println(count);
                 break;
+            }else{
+                sugar -= 3;
+                count++;
             }
-            sugar -= 3;
-            count++;
+            if(sugar < 0){
+                count = -1;
+            }
         }
+        System.out.println(count);
     }
 }
