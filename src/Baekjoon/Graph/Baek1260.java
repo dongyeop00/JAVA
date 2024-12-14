@@ -48,9 +48,6 @@ public class Baek1260 {
 
         // DFS 실행
         DFS(V);
-        for(int i=1; i<N+1; i++){
-            System.out.print(visited[i] + " ");
-        }
 
         System.out.println();
 
@@ -58,12 +55,10 @@ public class Baek1260 {
         count = 0;
 
         BFS(V);
-        for(int i=1; i<N+1; i++){
-            System.out.print(visited[i] + " ");
-        }
     }
 
     private static void DFS(int v){
+        System.out.print(v + " ");
         count++;
         visited[v] = count;
 
@@ -76,6 +71,8 @@ public class Baek1260 {
     }
 
     private static void BFS(int v){
+        System.out.print(v + " ");
+
         Queue<Integer> queue = new LinkedList<>();
 
         queue.offer(v);
@@ -86,6 +83,7 @@ public class Baek1260 {
             for(int i=0; i<graph.get(node).size(); i++){
                 int temp = graph.get(node).get(i);
                 if(visited[temp] == 0){
+                    System.out.print(temp + " ");
                    queue.offer(temp);
                    visited[temp] = ++count;
                 }
