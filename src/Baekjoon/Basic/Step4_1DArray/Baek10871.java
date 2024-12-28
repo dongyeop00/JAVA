@@ -1,4 +1,4 @@
-package Baekjoon.Simulation;
+package Baekjoon.Basic.Step4_1DArray;
 
 import java.io.*;
 import java.util.StringTokenizer;
