@@ -12,11 +12,10 @@ public class Baek10809 {
 
         Arrays.fill(count, -1);
 
-        for(int i=0; i<str.length(); i++){
-            if(count[str.charAt(i)- 'a'] < 0) {
-                count[str.charAt(i) - 'a'] = i;
-            }else{
-                continue;
+        for (int i = 0; i < str.length(); i++) {
+            int index = str.charAt(i) - 'a';
+            if (count[index] == -1) {
+                count[index] = i;
             }
         }
 
