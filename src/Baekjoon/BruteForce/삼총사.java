@@ -1,4 +1,4 @@
-package Baekjoon.Simulation;
+package Baekjoon.BruteForce;
 
 public class 삼총사 {
     public static void main(String[] args) {
