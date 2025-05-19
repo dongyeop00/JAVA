@@ -46,11 +46,6 @@ public class 미로1_D4 {
             int newX = x + dx[i];
             int newY = y + dy[i];
 
-            if(newX >= 0 && newY >= 0 && newX < 16 && newY < 16){
-                if(map[newX][newY] != 1 && !visited[newX][newY]){
-                    DFS(newX, newY);
-                }
-            }
         }
     }
 }
