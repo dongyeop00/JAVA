@@ -1,4 +1,4 @@
-package Baekjoon.Graph.DFS;
+package Baekjoon.BackTracking;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class 부분수열의합_D3 {
     }
 
     private static void DFS(int index, int sum){
-        if(sum == K){
+        if(index == N){
             count++;
             return;
         }
