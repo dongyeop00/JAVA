@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek2003 {
+public class 수들의합2 {
 
     static int N, M, count;
     static int[] num;

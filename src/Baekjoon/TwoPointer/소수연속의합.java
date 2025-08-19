@@ -3,7 +3,7 @@ package Baekjoon.TwoPointer;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Baek1644 {
+public class 소수연속의합 {
 
     static int N, count;
     static int[] num;

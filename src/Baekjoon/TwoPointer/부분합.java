@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek1806 {
+public class 부분합 {
 
     static int N, S;
     static int[] arr;
