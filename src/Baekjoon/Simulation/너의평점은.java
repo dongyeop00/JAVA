@@ -3,7 +3,6 @@ package Baekjoon.Simulation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Objects;
 import java.util.StringTokenizer;
 
 /* 너의 평점은
@@ -11,7 +10,7 @@ import java.util.StringTokenizer;
 (학점 x 과목 평점) / 학점의 총합
 
  */
-public class Baek25206 {
+public class 너의평점은 {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer;

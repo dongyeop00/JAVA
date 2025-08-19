@@ -3,7 +3,7 @@ package Baekjoon.Simulation;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Baek2578 {
+public class 빙고 {
 
     static int[][] map = new int[5][5];
     static int[] call = new int[25];

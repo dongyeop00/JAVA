@@ -26,7 +26,7 @@ lj와 nj도 마찬가지이다.
 
  */
 
-public class Baek2941 {
+public class 크로아티아알파벳 {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 

@@ -2,7 +2,7 @@ package Baekjoon.Simulation;
 
 import java.util.Scanner;
 
-public class Baek2577 {
+public class 숫자의개수 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

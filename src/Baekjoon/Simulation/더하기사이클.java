@@ -2,7 +2,7 @@ package Baekjoon.Simulation;
 
 import java.util.Scanner;
 
-public class Baek1110 {
+public class 더하기사이클 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

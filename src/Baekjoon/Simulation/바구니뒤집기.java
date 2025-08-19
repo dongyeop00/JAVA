@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek10811 {
+public class 바구니뒤집기 {
 
     static int[] arr;
 

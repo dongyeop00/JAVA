@@ -2,7 +2,7 @@ package Baekjoon.Simulation;
 
 import java.util.Scanner;
 
-public class Baek1292 {
+public class 쉽게푸는문제 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

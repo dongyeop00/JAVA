@@ -3,7 +3,7 @@ package Baekjoon.Simulation;
 import java.util.*;
 import java.io.*;
 
-public class Baek16919 {
+public class 붐버맨2 {
 
     static int R, C, N;
     static int[][] beforeMap;

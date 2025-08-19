@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek1978 {
+public class 소수찾기 {
 
     static int count = 0;
 

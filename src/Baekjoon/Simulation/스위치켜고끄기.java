@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek1244 {
+public class 스위치켜고끄기 {
 
     static int num;
     static int[] arr;

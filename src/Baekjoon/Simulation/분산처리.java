@@ -2,7 +2,7 @@ package Baekjoon.Simulation;
 
 import java.util.*;
 
-public class Baek1009 {
+public class 분산처리 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<Integer> list = new ArrayList<>();

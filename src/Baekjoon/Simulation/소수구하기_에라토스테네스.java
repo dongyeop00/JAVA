@@ -2,7 +2,7 @@ package Baekjoon.Simulation;
 
 import java.util.Scanner;
 
-public class Back1929_에라토스테네스 {
+public class 소수구하기_에라토스테네스 {
 
     static int[] arr;
 

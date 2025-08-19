@@ -3,7 +3,7 @@ package Baekjoon.Simulation;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Baek1475 {
+public class 방번호 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.next();

@@ -2,7 +2,7 @@ package Baekjoon.Simulation;
 
 import java.util.Scanner;
 
-public class Baek17478 {
+public class 재귀함수가뭔가요 {
 
     static String underBar = "";
     static int number;
