@@ -24,7 +24,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek2470 {
+public class 두용액 {
 
     static int N;
     static int[] arrayNum, answer;
