@@ -1,4 +1,4 @@
-package Baekjoon.MST;
+package Baekjoon.Graph.Dijkstra;
 
 import java.io.BufferedReader;
 import java.io.IOException;

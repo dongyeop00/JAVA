@@ -1,4 +1,5 @@
-package Baekjoon.Graph.위상정렬;
+package Baekjoon.Graph.TopologySort;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
