@@ -1,4 +1,4 @@
-package Baekjoon.Graph.DFS;
+package Baekjoon.BackTracking;
 
 import java.util.*;
 import java.io.*;
