@@ -1,4 +1,4 @@
-package Baekjoon.Graph.DFS;
+package Baekjoon.Graph.BFS;
 
 import java.util.*;
 import java.io.*;
