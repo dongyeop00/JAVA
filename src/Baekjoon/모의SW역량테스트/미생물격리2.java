@@ -92,7 +92,7 @@ public class 미생물격리2 {
 				for(Bug b : group) {
 					sum += b.cnt;
 					
-					if(maxBug == null || maxBug.cnt < b.cnt) maxBug = b;
+					if(maxBug == null || maxBug.cnt > b.cnt) maxBug = b;
 				}
 				
 				maxBug.cnt = sum;
