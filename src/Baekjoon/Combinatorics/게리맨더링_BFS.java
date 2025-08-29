@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class 게리맨더링 {
+public class 게리맨더링_BFS {
 
     static int N, min = Integer.MAX_VALUE, count = 0;
     static int[] people;
