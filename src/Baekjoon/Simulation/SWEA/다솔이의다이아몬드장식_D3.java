@@ -1,4 +1,4 @@
-package Baekjoon.Simulation;
+package Baekjoon.Simulation.SWEA;
 
 import java.util.Scanner;
 

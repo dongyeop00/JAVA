@@ -1,4 +1,4 @@
-package Baekjoon.Simulation;
+package Baekjoon.Simulation.SWEA;
 
 public class 거듭제곱_D3 {
 
