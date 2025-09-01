@@ -38,6 +38,30 @@ public class 나무높이 {
         }
     }
 
+    private static int watering2(int[] trees, int N, int maxHeight){
+        int days = 0, ones = 0, twos = 0;
+
+        for(int i=0; i<N; i++){
+            ones += (maxHeight - trees[i]) % 2;
+            twos += (maxHeight - trees[i]) / 2;
+        }
+
+        int mins = Math.min(ones, twos);
+        ones -= mins;
+        twos -= mins;
+        days += mins * 2;
+
+        if(twos == 0){
+            days += 2 * ones - 1;
+        }
+
+        if(ones == 0){
+            days += twos + 1 + (twos-1)/3;
+        }
+
+        return days;
+    }
+
     private static int watering(int[] trees, int N, int maxHeight){
         int days = 0, ones = 0, twos = 0;
 
