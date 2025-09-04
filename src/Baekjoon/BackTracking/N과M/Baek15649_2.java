@@ -1,14 +1,15 @@
-package Baekjoon.BackTracking;
+package Baekjoon.BackTracking.N과M;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek15652 {
+public class Baek15649_2 {
 
     static int[] map;
-    static int N,M;
+    static boolean[] visited;
+    static int N, M;
     static StringBuilder stringBuilder = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -19,13 +20,13 @@ public class Baek15652 {
         M = Integer.parseInt(stringTokenizer.nextToken());
 
         map = new int[M];
+        visited = new boolean[N];
 
-        backTracking(1,0);
+        backTracking(0);
         System.out.println(stringBuilder);
     }
 
-    private static void backTracking(int n, int depth){
-
+    public static void backTracking(int depth){
         if(depth == M){
             for(int num : map){
                 stringBuilder.append(num).append(' ');
@@ -34,9 +35,13 @@ public class Baek15652 {
             return;
         }
 
-        for(int i=n; i<=N; i++){
-            map[depth] = i;
-            backTracking(i,depth+1);
+        for(int i=0; i<N; i++){
+            if(!visited[i]) {
+                visited[i] = true;
+                map[depth] = i + 1;
+                backTracking(depth + 1);
+                visited[i] = false;
+            }
         }
     }
 }

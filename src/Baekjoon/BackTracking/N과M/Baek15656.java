@@ -1,4 +1,4 @@
-package Baekjoon.BackTracking;
+package Baekjoon.BackTracking.N과M;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,9 +6,10 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek15657 {
+public class Baek15656 {
     static int[] map, answer;
     static int N, M;
+    static StringBuilder stringBuilder = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -27,21 +28,22 @@ public class Baek15657 {
 
         Arrays.sort(map);
 
-        backTracking(0,0);
+        backTracking(0);
+        System.out.println(stringBuilder);
     }
 
-    private static void backTracking(int start, int depth){
-        if(depth == M){
+    private static void backTracking(int depth){
+        if(depth == M) {
             for(int num : answer){
-                System.out.print(num + " ");
+                stringBuilder.append(num).append(" ");
             }
-            System.out.println();
+            stringBuilder.append("\n");
             return;
         }
 
-        for(int i=start; i<N; i++){
+        for(int i=0; i<N; i++){
             answer[depth] = map[i];
-            backTracking(i,depth+1);
+            backTracking(depth+1);
         }
     }
 }

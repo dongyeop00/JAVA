@@ -1,4 +1,4 @@
-package Baekjoon.BackTracking;
+package Baekjoon.BackTracking.N과M;
 
 import java.io.BufferedReader;
 import java.io.IOException;

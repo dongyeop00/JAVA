@@ -1,16 +1,16 @@
-package Baekjoon.BackTracking;
+package Baekjoon.BackTracking.N과M;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek15649_2 {
+public class Baek15654 {
 
-    static int[] map;
+    static int[] map, answer;
     static boolean[] visited;
     static int N, M;
-    static StringBuilder stringBuilder = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -19,27 +19,33 @@ public class Baek15649_2 {
         N = Integer.parseInt(stringTokenizer.nextToken());
         M = Integer.parseInt(stringTokenizer.nextToken());
 
-        map = new int[M];
+        map = new int[N];
+        answer = new int[M];
         visited = new boolean[N];
 
+        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+        for(int i=0; i<N; i++){
+            map[i] = Integer.parseInt(stringTokenizer.nextToken());
+        }
+
+        Arrays.sort(map);
         backTracking(0);
-        System.out.println(stringBuilder);
     }
 
-    public static void backTracking(int depth){
+    private static void backTracking(int depth){
         if(depth == M){
-            for(int num : map){
-                stringBuilder.append(num).append(' ');
+            for(int num : answer){
+                System.out.print(num + " ");
             }
-            stringBuilder.append('\n');
+            System.out.println();
             return;
         }
 
         for(int i=0; i<N; i++){
-            if(!visited[i]) {
+            if(!visited[i]){
                 visited[i] = true;
-                map[depth] = i + 1;
-                backTracking(depth + 1);
+                answer[depth] = map[i];
+                backTracking(depth+1);
                 visited[i] = false;
             }
         }
