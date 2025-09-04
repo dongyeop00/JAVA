@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /* 단지 번호 붙이기
 <그림 1>과 같이 정사각형 모양의 지도가 있다. 1은 집이 있는 곳을, 0은 집이 없는 곳을 나타낸다.
@@ -30,62 +31,89 @@ import java.util.Collections;
 9
 
  */
-public class Baek2667 {
+public class 단지번호붙이기 {
+	
+	static int N, houseCount;
+	static int[][] map;
+	static boolean[][] visited;
+	static int[] dx = {-1, 0, 1, 0};
+	static int[] dy = {0, 1, 0, -1};
 
-    static int[][] map;
-    static boolean[][] visited;
-    static ArrayList<Integer> countList = new ArrayList<>();
-    static int[] dx = { -1 , 0, 1, 0};
-    static int[] dy = {0, 1, 0, -1};
-    static int N, count;
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(bufferedReader.readLine());
-
+        
         map = new int[N][N];
         visited = new boolean[N][N];
-
-        for(int i=0; i<N;i++){
-            String str = bufferedReader.readLine();
-            for(int j=0; j<N; j++){
-                char c = str.charAt(j);
-                map[i][j] = c - '0';
-            }
+        
+        for(int i=0; i<N; i++) {
+        	String str = bufferedReader.readLine();
+        	for(int j=0; j<N; j++) {
+        		map[i][j] = str.charAt(j) - '0';
+        	}
         }
-
-        for(int i=0; i<N; i++){
-            for(int j=0; j<N; j++){
-                if(map[i][j] == 1 && !visited[i][j]){
-                    count = 0;
-                    DFS(i,j);
-                    countList.add(count);
-                }
-            }
+        
+        // 집 수
+        houseCount = 1;
+        List<Integer> list = new ArrayList<>();
+        
+        for(int i=0; i<N; i++) {
+        	for(int j=0; j<N; j++) {
+        		if(!visited[i][j] && map[i][j] != 0) {
+        			DFS(i, j);
+        			list.add(houseCount);
+        			houseCount = 1;
+        		}
+        	}
         }
-
-        Collections.sort(countList);
-
-        System.out.println(countList.size());
-
-        for(int i=0; i<countList.size(); i++){
-            System.out.println(countList.get(i));
-        }
+        
+        System.out.println(list.size());
+        Collections.sort(list);
+        for(int num : list) System.out.println(num);
+    }
+    
+    public static void DFS(int x, int y) {
+    	visited[x][y] = true;
+    	
+    	for(int i=0; i<4; i++) {
+    		int newX = x + dx[i];
+    		int newY = y + dy[i];
+    		
+    		if(newX < 0 || newY < 0 || newX >=N || newY >= N) continue;
+    		if(visited[newX][newY]) continue;
+    		if(map[newX][newY] != 1) continue;
+    		
+    		DFS(newX, newY);
+    		houseCount++;
+    	}
     }
 
-    private static void DFS(int x, int y){
-        visited[x][y] = true;
-        count++;
-
-        for(int i=0; i<4; i++){
-            int newX = x + dx[i];
-            int newY = y + dy[i];
-
-            if(newX >= 0 && newY >= 0 && newX < N && newY < N){
-                if(map[newX][newY] == 1 && !visited[newX][newY]){
-                    DFS(newX, newY);
-                }
-            }
-        }
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
