@@ -14,6 +14,7 @@ public class 등산로조성 {
     static boolean[][] visited;
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
+    static List<Mountain> mountainList;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,71 +27,70 @@ public class 등산로조성 {
             N = Integer.parseInt(st.nextToken());
             K = Integer.parseInt(st.nextToken());
 
-            List<Mountain> mountainList = new ArrayList<>();
             map = new int[N][N];
             visited = new boolean[N][N];
+            mountainList = new ArrayList<>();
             maxLen = Integer.MIN_VALUE;
             int max = 0;
-
-            for(int i=0; i<N; i++){
-                st = new StringTokenizer(br.readLine());
-                for(int j=0; j<N; j++){
-                    map[i][j] = Integer.parseInt(st.nextToken());
-                    max = Math.max(map[i][j], max);
-                }
+            
+            for(int i=0; i<N; i++) {
+            	st = new StringTokenizer(br.readLine());
+            	for(int j=0; j<N; j++) {
+            		map[i][j] = Integer.parseInt(st.nextToken());
+            		max = Math.max(max, map[i][j]);
+            	}
             }
-
-            for(int i=0; i<N; i++){
-                for(int j=0; j<N; j++){
-                    if(map[i][j] == max){
-                        mountainList.add(new Mountain(i, j));
-                    }
-                }
+            
+            for(int i=0; i<N; i++) {
+            	for(int j=0; j<N; j++) {
+            		if(map[i][j] == max) {
+            			mountainList.add(new Mountain(i, j));
+            		}
+            	}
             }
-
-            for(Mountain m : mountainList){
-                visited[m.x][m.y] = true;
-                DFS(m.x, m.y, 1, false);
-                visited[m.x][m.y] = false;
+            
+            for(Mountain m : mountainList) {
+            	visited[m.x][m.y] = true;
+            	DFS(m.x, m.y, 1, false);
+            	visited[m.x][m.y] = false;
             }
-
+            
             System.out.println("#" + testCase + " " + maxLen);
         }
     }
-
-    public static void DFS(int x, int y, int cnt, boolean cut){
-        maxLen = Math.max(cnt, maxLen);
-
-        for(int i=0; i<4; i++){
-            int newX = x + dx[i];
-            int newY = y + dy[i];
-
-            if(newX < 0 || newY < 0 || newX >= N || newY >= N) continue;
-            if(visited[newX][newY]) continue;
-
-            // 그냥 이동할 수 있을 때
-            if (map[newX][newY] < map[x][y]) {
-                visited[newX][newY] = true;
-                DFS(newX, newY, cnt+1, cut);
-                visited[newX][newY] = false;
-            }else if(!cut && map[newX][newY] - K < map[x][y]){ // 1번 자르지 않았고, k만큼 빼면 이동할 수 있을 때
-                int originValue = map[newX][newY];
-                map[newX][newY] = map[x][y] - 1;
-                visited[newX][newY] = true;
-                DFS(newX, newY, cnt+1, true);
-                visited[newX][newY] = false;
-                map[newX][newY] = originValue;
-            }
-        }
+    
+    public static void DFS(int x, int y, int cnt, boolean cut) {
+    	maxLen = Math.max(maxLen, cnt);
+    	
+    	for(int i=0; i<4; i++) {
+    		int newX = x + dx[i];
+    		int newY = y + dy[i];
+    		
+    		if(newX < 0 || newY < 0 || newX >= N || newY >= N) continue;
+    		if(visited[newX][newY]) continue;
+    		
+    		if(map[newX][newY] < map[x][y]) {
+    			visited[newX][newY] = true;
+    			DFS(newX, newY, cnt+1, cut);
+    			visited[newX][newY] = false;
+    		}else if(!cut && map[newX][newY] - K < map[x][y]) {
+    			int originValue = map[newX][newY];
+    			map[newX][newY] = map[x][y] - 1;
+    			visited[newX][newY] = true;
+    			DFS(newX, newY, cnt+1, true);
+    			visited[newX][newY] = false;
+    			map[newX][newY] = originValue;
+    		}
+    	}
     }
-
-    static class Mountain{
-        int x;
-        int y;
-
-        Mountain(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
+    
+    public static class Mountain{
+    	int x;
+    	int y;
+    	
+    	Mountain(int x, int y){
+    		this.x = x;
+    		this.y = y;
+    	}
     }
 }
