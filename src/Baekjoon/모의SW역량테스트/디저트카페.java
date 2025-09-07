@@ -10,7 +10,7 @@ public class 디저트카페 {
     static int N, result;
     static int[][] map;
     static boolean[][] visited;
-    static boolean[] desert;
+    static boolean[] dessert;
     // ↗ ↘ ↙ ↖
     static int[] dx = {-1, 1, 1, -1};
     static int[] dy = {1, 1, -1, -1};
@@ -37,10 +37,10 @@ public class 디저트카페 {
             for(int i=0; i<N; i++){
                 for(int j=0; j<N; j++){
                     visited = new boolean[N][N];
-                    desert = new boolean[101];
+                    dessert = new boolean[101];
 
                     visited[i][j] = true;
-                    desert[map[i][j]] = true;
+                    dessert[map[i][j]] = true;
                     dfs(i, j, i, j, 0, 1);
                 }
             }
@@ -49,6 +49,15 @@ public class 디저트카페 {
         }
     }
 
+    /**
+     * 
+     * @param sx : 시작 x
+     * @param sy : 시작 y
+     * @param x : 현재 x
+     * @param y : 현재 y
+     * @param dir : 현재 방향
+     * @param cnt : 지금까지 먹은 디저트 수
+     */
     public static void dfs(int sx, int sy, int x, int y, int dir, int cnt){
         // 직진 or 한번 꺾기만 가능함
         for(int i=0; i<2; i++){
@@ -67,14 +76,14 @@ public class 디저트카페 {
 
             int d = map[newX][newY];
 
-            if(!visited[newX][newY] && !desert[d]){
+            if(!visited[newX][newY] && !dessert[d]){
                 visited[newX][newY] = true;
-                desert[d] = true;
+                dessert[d] = true;
 
                 dfs(sx, sy, newX, newY, newDir, cnt+1);
 
                 visited[newX][newY] = false;
-                desert[d] = false;
+                dessert[d] = false;
             }
         }
     }
