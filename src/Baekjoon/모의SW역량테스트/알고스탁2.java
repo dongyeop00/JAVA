@@ -1,16 +1,16 @@
 package Baekjoon.모의SW역량테스트;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 public class 알고스탁2 {
 
-    static int S, A, N, L, maxBenefit;
-    static int[][] cost;
+    // result = 최대 금액 - (예치금 + 불입금액 * 데이터기간)
+    static int Ms, Ma; // 예치금, 월별 불입금액
+    static int N, L; // 종목 수, 데이터 기간
+    static int maxbenefit; // 최대 이익금
+    static int[][] data;
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,71 +20,86 @@ public class 알고스탁2 {
         for(int testCase=1; testCase<=TC; testCase++){
             st = new StringTokenizer(br.readLine());
 
-            S = Integer.parseInt(st.nextToken()); //초기 자본
-            A = Integer.parseInt(st.nextToken()); // 매달 추가 입금액
+            Ms = Integer.parseInt(st.nextToken());
+            Ma = Integer.parseInt(st.nextToken());
 
             st = new StringTokenizer(br.readLine());
 
-            N = Integer.parseInt(st.nextToken()); // 종목 개수
-            L = Integer.parseInt(st.nextToken()); // 총 개월 수
+            N = Integer.parseInt(st.nextToken());
+            L = Integer.parseInt(st.nextToken());
 
-            cost = new int[N][L+1];
+            data = new int[N][L+1];
 
             for(int i=0; i<N; i++){
                 st = new StringTokenizer(br.readLine());
                 for(int j=0; j<L+1; j++){
-                    cost[i][j] = Integer.parseInt(st.nextToken());
+                    data[i][j] = Integer.parseInt(st.nextToken());
                 }
             }
 
-            int money = S;
+            int money = Ms;
+            maxbenefit = Integer.MIN_VALUE;
 
-            for(int month=0; month<L; month++){
-                List<Stock> stockList = new ArrayList<>();
-
-                for(int i=0; i<N; i++){
-                    if(cost[i][month] < cost[i][month+1]){ //현재 달과 다음 달과 비교
-                        stockList.add(new Stock(cost[i][month], cost[i][month+1], cost[i][month+1] - cost[i][month]));
+            // 월 별 이득나는 종목 구하기
+            for(int i=0; i<L; i++){
+                List<Stock> list = new ArrayList<>();
+                for(int j=0; j<N; j++){
+                    if(data[j][i] < data[j][i+1]){
+                        int currentPrice = data[j][i];
+                        int nextPrice = data[j][i+1];
+                        int benefit = nextPrice - currentPrice;
+                        list.add(new Stock(currentPrice, nextPrice, benefit));
                     }
                 }
 
-                maxBenefit = 0;
+                // 이번달에 얻을 수 있는 최대 금액
+                maxbenefit = 0;
 
-                dfs(0, money, 0, stockList);
+                dfs(money, 0, 0, list);
 
-                money += maxBenefit;
-                money += A;
+                money += maxbenefit;
+                money += Ma;
             }
 
-            int result = money - S - (A*L);
-            System.out.println(result);
+            int result = money - Ms - (Ma * L);
+            System.out.println("#" + testCase + " " + result);
         }
     }
 
-    public static void dfs(int index, int money, int benefit, List<Stock> list){
+    /**
+     *
+     * @param money : 현재 보유 금액
+     * @param benefit : 이익 금액
+     * @param index : 구매할 종목 번호
+     * @param list : 이익나는 종목들의 리스트
+     */
+
+    public static void dfs(int money, int benefit, int index, List<Stock> list){
         if(index == list.size()){
-            maxBenefit = Math.max(benefit, maxBenefit);
+            maxbenefit = Math.max(maxbenefit, benefit);
             return;
         }
 
         Stock current = list.get(index);
 
-        if(money >= current.current){
-            dfs(index, money - current.current, benefit + current.diff, list);
+        // 살 수 있다면 계속 구입
+        if(money >= current.currentPrice){
+            dfs(money - current.currentPrice, benefit + current.benefit, index, list);
         }
 
-        dfs(index+1, money, benefit, list);
+        // 구입 안함
+        dfs(money, benefit, index+1, list);
     }
 
     public static class Stock{
-        int current;
-        int next;
-        int diff;
+        int currentPrice;
+        int nextPrice;
+        int benefit;
 
-        Stock(int current, int next, int diff){
-            this.current = current;
-            this.next = next;
-            this.diff = diff;
+        Stock(int currentPrice, int nextPrice, int benefit){
+            this.currentPrice = currentPrice;
+            this.nextPrice = nextPrice;
+            this.benefit = benefit;
         }
     }
 }
