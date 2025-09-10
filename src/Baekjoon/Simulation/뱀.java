@@ -1,4 +1,4 @@
-package Baekjoon;
+package Baekjoon.Simulation;
 
 import java.util.*;
 import java.io.*;
