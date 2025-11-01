@@ -59,29 +59,37 @@ public class 낚시왕 {
             // 3. 상어가 이동한다.
             Shark[][] board = new Shark[N][M];
             for(Shark current : sharks){
+                int move = current.s;
 
-                for(int i=0; i<current.s; i++){
-                    int newX = current.x + dx[current.d];
-                    int newY = current.y + dy[current.d];
+                if(current.d == 0 || current.d == 1){
+                    int cycle = (N-1) * 2;
+                    move %= cycle;
 
-                    // 경계 벗어나면 방향만 바꾸고 재시작
-                    if(newX < 0 || newY < 0 || newX >= N || newY >= M){
-                        if(current.d == 0) current.d = 1;
-                        else if(current.d == 1) current.d = 0;
-                        else if(current.d == 2) current.d = 3;
-                        else  current.d = 2;
-
-                        newX = current.x + dx[current.d];
-                        newY = current.y + dy[current.d];
+                    for(int i=0; i<move; i++){
+                        if(current.d == 0 && current.x == 0){
+                            current.d = 1;
+                        }else if(current.d == 1 && current.x == N-1){
+                            current.d = 0;
+                        }
+                        current.x += dx[current.d];
                     }
+                }else{
+                    int cycle = (M-1) * 2;
+                    move %= cycle;
 
-                    current.x = newX;
-                    current.y = newY;
+                    for(int i=0; i<move; i++){
+                        if(current.d == 2 && current.y == M-1){
+                            current.d = 3;
+                        }else if(current.d == 3 && current.y == 0){
+                            current.d = 2;
+                        }
+                        current.y += dy[current.d];
+                    }
                 }
 
                 // 상어 다시 배치하기
                 if(board[current.x][current.y] == null || board[current.x][current.y].z < current.z){
-                    board[current.x][current.y] = new Shark(current.x, current.y, current.s, current.d, current.z);
+                    board[current.x][current.y] = current;
                 }
             }
 
