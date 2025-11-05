@@ -53,7 +53,6 @@ public class 전기자동차충전소 {
 				continue;
 			}
 			
-			
 			for(int x1=-15; x1<=15; x1++) {
 				for(int y1=-15; y1<=15; y1++) {
 					for(int x2=-15; x2<=15; x2++) {
