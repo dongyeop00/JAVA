@@ -1,4 +1,4 @@
-package Baekjoon.Graph.BFS;
+package Baekjoon.Graph.BFS01;
 
 import java.io.BufferedReader;
 import java.io.IOException;
