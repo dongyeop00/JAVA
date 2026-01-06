@@ -31,9 +31,9 @@ public class 근성아일하자 {
                     Integer left = ts.floor(guenseong);
 
                     int target = 0;
-                    if(left == null){ // 왼쪽이 비어있다면 오른쪽에는 쓰레기가 있다.
+                    if(left == null && right != null){ // 왼쪽이 비어있다면 오른쪽에는 쓰레기가 있다.
                         target = right;
-                    }else if(right == null){ // 오른쪽이 비어있다면 왼쪽에는 쓰레기가 있다.
+                    }else if(right == null && left != null){ // 오른쪽이 비어있다면 왼쪽에는 쓰레기가 있다.
                         target = left;
                     }else{
                         int leftDistance = guenseong - left;
